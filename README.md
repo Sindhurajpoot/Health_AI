@@ -1,2 +1,2 @@
-# Health_AI
-AI Health Guardian is an AI-powered healthcare assistant that analyzes symptoms and emotional state to predict conditions, assess risk levels, and suggest real-time actions like emergency help or doctor consultation. It combines NLP, Flask APIs, and a modern UI for smart health decisions.
+# Health_AI Demo/Prototype
+AI Health Guardian is a prototype healthcare assistant that combines symptom analysis, emotion detection, and risk prediction using AI. It provides real-time health insights and suggests actions like emergency response or doctor consultation, enabling smarter and faster decision-making.
