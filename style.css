@@ -1,0 +1,171 @@
+/* -------------------------------
+   GLOBAL STYLES
+--------------------------------*/
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* Container */
+.container {
+    text-align: center;
+    padding: 40px;
+}
+
+/* Title */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+/* -------------------------------
+   GLASS CARD (INPUT)
+--------------------------------*/
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 15px;
+    width: 60%;
+    margin: auto;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Text Area */
+textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* -------------------------------
+   BUTTON (MAIN)
+--------------------------------*/
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,198,255,0.6);
+}
+
+/* -------------------------------
+   RESULT CARD
+--------------------------------*/
+.result-card {
+    margin-top: 30px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px);
+    padding: 25px;
+    border-radius: 15px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* -------------------------------
+   PROGRESS BAR
+--------------------------------*/
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #444;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+#progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+/* -------------------------------
+   ACTION BUTTONS (WOW FEATURE)
+--------------------------------*/
+#actionButtons {
+    margin-top: 20px;
+}
+
+/* High Risk */
+button.danger {
+    background: linear-gradient(to right, #ff416c, #ff0000);
+    margin: 10px;
+}
+
+button.danger:hover {
+    box-shadow: 0 0 15px rgba(255,0,0,0.7);
+}
+
+/* Medium Risk */
+button.warning {
+    background: linear-gradient(to right, #f7971e, #ffd200);
+    color: black;
+    margin: 10px;
+}
+
+button.warning:hover {
+    box-shadow: 0 0 15px rgba(255,200,0,0.7);
+}
+
+/* Low Risk */
+button.safe {
+    background: linear-gradient(to right, #00b09b, #96c93d);
+    margin: 10px;
+}
+
+button.safe:hover {
+    box-shadow: 0 0 15px rgba(0,255,150,0.7);
+}
+
+/* -------------------------------
+   RESPONSIVE DESIGN
+--------------------------------*/
+@media (max-width: 768px) {
+    .card, .result-card {
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
