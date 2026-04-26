@@ -3,125 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health AI Analyzer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>AI Health Guardian</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>Health AI Analyzer</h1>
-        <p class="subtitle">Describe your symptoms to get disease prediction and emotion analysis.</p>
-        <div class="card">
-            <textarea id="inputText" placeholder="Enter your symptoms here..."></textarea>
-            <button onclick="analyzeHealth()">Analyze</button>
-        </div>
-        <div id="resultBox" class="result-card" style="display: none;">
-            <h2>Analysis Results</h2>
-            <p><strong>Disease:</strong> <span id="disease"></span></p>
-            <p><strong>Emotion:</strong> <span id="emotion"></span></p>
-            <p><strong>Advice:</strong> <span id="advice"></span></p>
-            <div class="progress-bar">
-                <div id="progress"></div>
-            </div>
-            <p id="riskText"></p>
-            <div id="actionButtons"></div>
-        </div>
+
+<div class="container">
+
+    <h1>🩺 AI Health Guardian</h1>
+    <p class="subtitle">
+        Emotion-Aware Smart Healthcare Assistant
+    </p>
+
+    <div class="card">
+        <textarea
+            id="inputText"
+            placeholder="Describe your symptoms and feelings here..."
+        ></textarea>
+
+        <button onclick="analyzeHealth()">
+            Analyze Health
+        </button>
     </div>
-    <script>
-async function analyzeHealth() {
-    let input = document.getElementById("inputText").value;
 
-    if (input.trim() === "") {
-        alert("Please enter your symptoms first!");
-        return;
-    }
+    <div id="resultBox" class="result-card" style="display:none;">
 
-    // Show loading state
-    document.getElementById("resultBox").style.display = "block";
-    document.getElementById("disease").innerText = "Analyzing...";
-    document.getElementById("emotion").innerText = "Analyzing...";
-    document.getElementById("advice").innerText = "Processing...";
-    document.getElementById("riskText").innerText = "⏳ Please wait...";
-    document.getElementById("progress").style.width = "20%";
-    document.getElementById("actionButtons").innerHTML = "";
+        <h2>Analysis Results</h2>
 
-    try {
-        const response = await fetch("http://127.0.0.1:5000/analyze", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ text: input })
-        });
+        <p><strong>Disease:</strong> <span id="disease"></span></p>
+        <p><strong>Emotion:</strong> <span id="emotion"></span></p>
+        <p><strong>Advice:</strong> <span id="advice"></span></p>
+        <p><strong>AI Insight:</strong> <span id="insight"></span></p>
 
-        const data = await response.json();
-        console.log(data);
+        <p><strong>Confidence Score:</strong>
+            <span id="confidence"></span>%
+        </p>
 
-        // Fill data
-        document.getElementById("disease").innerText = data.disease;
-        document.getElementById("emotion").innerText = data.emotion;
-        document.getElementById("advice").innerText = data.advice;
+        <p><strong>Future Risk Prediction:</strong>
+            <span id="futureRisk"></span>%
+        </p>
 
-        let progress = document.getElementById("progress");
-        progress.style.width = data.risk + "%";
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
 
-        // Risk Text
-        let riskText = "";
-        if (data.risk > 80) {
-            riskText = "🚨 High Risk – Immediate attention required!";
-        } else if (data.risk > 60) {
-            riskText = "⚠️ Moderate Risk – Consult doctor soon";
-        } else {
-            riskText = "✅ Low Risk – Home care is sufficient";
-        }
-        document.getElementById("riskText").innerText = riskText;
+        <p id="riskText"></p>
 
-        
-        let actionHTML = "";
+        <div id="actionButtons"></div>
 
-        if (data.alert === "HIGH") {
-            actionHTML = `
-                <button class="danger" onclick="callEmergency()">🚨 Call Emergency</button>
-                <button class="danger" onclick="findHospital()">🏥 Find Hospital</button>
-            `;
-        } 
-        else if (data.alert === "MEDIUM") {
-            actionHTML = `
-                <button class="warning" onclick="bookAppointment()">📅 Book Appointment</button>
-            `;
-        } 
-        else {
-            actionHTML = `
-                <button class="safe" onclick="showTips()">✅ Home Care Tips</button>
-            `;
-        }
+    </div>
 
-        document.getElementById("actionButtons").innerHTML = actionHTML;
+</div>
 
-    } catch (error) {
-        alert("Server error. Make sure backend is running.");
-        console.error(error);
-    }
-}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 
-/* -------------------------------
-   BUTTON ACTION FUNCTIONS
---------------------------------*/
-
-function callEmergency() {
-    alert("🚨 Calling emergency contact...");
-}
-
-function findHospital() {
-    window.open("https://www.google.com/maps/search/hospitals+near+me");
-}
-
-function bookAppointment() {
-    alert("📅 Redirecting to doctor booking system...");
-}
-
-function showTips() {
-    alert("💡 Stay hydrated, take rest, and monitor symptoms.");
-}
-</script>
 </body>
 </html>
